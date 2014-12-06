@@ -6,6 +6,9 @@ reference implementation: QR-code for sepa credit transfers (SCT) => in germany:
 usage
 =====
 
+see showcase: https://github.com/deltatree/qrsct/blob/master/src/test/java/de/deltatree/tools/qrsct/showcase/Example.java
+
+
 ```
 		String build = new QRSCT()
 				.serviceTag(QRSCTServiceTagEnum.DEFAULT)
