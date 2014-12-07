@@ -8,6 +8,7 @@ usage
 
 see showcase: https://github.com/deltatree/qrsct/blob/master/src/test/java/de/deltatree/tools/qrsct/showcase/Example.java
 
+Showcase is using https://github.com/zxing/zxing:
 
 ```
 		String build = new QRSCT()
