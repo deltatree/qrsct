@@ -1,7 +1,7 @@
 qrsct
 =====
 
-reference implementation: QR-code for sepa credit transfers (SCT) => in germany: girocode
+java reference implementation: QR-code for sepa credit transfers (SCT) => in germany: girocode
 
 usage
 =====
@@ -23,8 +23,10 @@ Showcase is using https://github.com/zxing/zxing:
 				.reference("egon 123 test - dankeschön").hint("keiner :-)") //$NON-NLS-1$ //$NON-NLS-2$
 				.build();
 
+		FileOutputStream fileOutputStream = new FileOutputStream(new File(
+				"C:/Temp/test.png"));
 		QRCode.from(build).to(ImageType.PNG).withCharset("UTF-8") //$NON-NLS-1$
 				.withErrorCorrection(ErrorCorrectionLevel.M)
-				.writeTo(new FileOutputStream(new File("test.png"))); //$NON-NLS-1$
-		;
+				.writeTo(fileOutputStream); //$NON-NLS-1$
+		fileOutputStream.close();
 ```

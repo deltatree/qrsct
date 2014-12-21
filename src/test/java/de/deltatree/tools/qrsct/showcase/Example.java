@@ -1,9 +1,8 @@
 package de.deltatree.tools.qrsct.showcase;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 
 import net.glxn.qrgen.core.image.ImageType;
 import net.glxn.qrgen.javase.QRCode;
@@ -19,8 +18,7 @@ import de.deltatree.tools.qrsct.QRSCTVersionEnum;
 
 public class Example {
 
-	public static void main(String[] args) throws FileNotFoundException,
-			UnsupportedEncodingException {
+	public static void main(String[] args) throws IOException {
 
 		String build = new QRSCT()
 				.serviceTag(QRSCTServiceTagEnum.DEFAULT)
@@ -34,11 +32,12 @@ public class Example {
 				.reference("egon 123 test - dankeschön").hint("keiner :-)") //$NON-NLS-1$ //$NON-NLS-2$
 				.build();
 
+		FileOutputStream fileOutputStream = new FileOutputStream(new File(
+				"C:/Temp/test.png"));
 		QRCode.from(build).to(ImageType.PNG).withCharset("UTF-8") //$NON-NLS-1$
 				.withErrorCorrection(ErrorCorrectionLevel.M)
-				.writeTo(new FileOutputStream(new File("C:/Temp/test.png"))); //$NON-NLS-1$
-		;
-
+				.writeTo(fileOutputStream); //$NON-NLS-1$
+		fileOutputStream.close();
 	}
 
 }
