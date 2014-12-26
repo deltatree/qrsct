@@ -30,6 +30,14 @@
 		<url>git@github.com:deltatree/qrsct</url>
 	</scm>
 
+	<distributionManagement>
+		<repository>
+			<id>bintray-deltatree-maven-qrsct</id>
+			<name>deltatree-maven-qrsct</name>
+			<url>https://api.bintray.com/maven/deltatree/maven/qrsct</url>
+		</repository>
+	</distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>net.glxn.qrgen</groupId>
@@ -43,5 +51,15 @@
 			<version>1.14</version>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.1</version>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
