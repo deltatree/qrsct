@@ -3,6 +3,11 @@ qrsct
 
 java reference implementation: QR-code for sepa credit transfers (SCT) => in germany: girocode
 
+demo-link
+=====
+
+http://qrsct.deltatree.de/dtapp/qrsct/
+
 maven
 =====
 ```
