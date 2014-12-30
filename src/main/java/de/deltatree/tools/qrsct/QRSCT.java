@@ -50,17 +50,17 @@ public class QRSCT {
 		data.append("\n"); //$NON-NLS-1$
 		data.append(IDENTIFICATION_CODE); // 3 - SCT (Funktion)
 		data.append("\n"); //$NON-NLS-1$
-		data.append(this.bic); // 8 oder 11 - (BIC EmpfängerBank)
+		data.append(this.bic); // 8 oder 11 - (BIC Empfï¿½ngerBank)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.name); // 70 (Name
-								// EmpfängerKontoInhaber)
+								// EmpfÃ¤nger/KontoInhaber)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.iban); // 34 (IBAN
-								// EmpfängerKonto)
+								// Empfï¿½ngerKonto)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.amount); // 12 - (Betrag in Euro)
 		data.append("\n"); //$NON-NLS-1$
-		data.append(this.purpose.getPurposeId()); // 4 - (Geschäftscode)
+		data.append(this.purpose.getPurposeId()); // 4 - (GeschÃ¤ftscode)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.reference); // Zahlungsreferenz(35)
 		data.append("\n"); //$NON-NLS-1$
