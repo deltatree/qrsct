@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.deltatree.tools</groupId>
 	<artifactId>qrsct</artifactId>
-	<version>1.1.2</version>
+	<version>1.1.3-SNAPSHOT</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>reference implementation: QR-code for sepa credit transfers (SCT) =&gt; in germany: girocode</description>
 	<url>https://github.com/deltatree/qrsct</url>
@@ -27,7 +27,7 @@
 		<connection>scm:git:git@github.com:deltatree/qrsct</connection>
 		<developerConnection>scm:git:git@github.com:deltatree/qrsct</developerConnection>
 		<url>git@github.com:deltatree/qrsct</url>
-		<tag>qrsct-1.1.2</tag>
+		<tag>qrsct-1.1.1</tag>
 	</scm>
 
 	<distributionManagement>
