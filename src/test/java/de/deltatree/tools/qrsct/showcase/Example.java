@@ -25,11 +25,11 @@ public class Example {
 				.version(QRSCTVersionEnum.DEFAULT)
 				.characterSet(QRSCTCharacterSetEnum.DEFAULT)
 				.bic("BHBLDEHHXXX") //$NON-NLS-1$
-				.name("Franz Mustermännchen") //$NON-NLS-1$
+				.name("Franz Mustermaennchen") //$NON-NLS-1$
 				.iban("DE71110220330123456789123456789876") //$NON-NLS-1$
 				.amount(CurrencyCode.EUR, 999999999.11)
 				.purpose(QRSCTPurposeEnum.DEFAULT)
-				.reference("egon 123 test - dankeschön").hint("keiner :-)") //$NON-NLS-1$ //$NON-NLS-2$
+				.reference("egon 123 test : dankeschoen").hint("kein Hinweis") //$NON-NLS-1$ //$NON-NLS-2$
 				.build();
 
 		FileOutputStream fileOutputStream = new FileOutputStream(new File(
