@@ -3,6 +3,8 @@ package de.deltatree.tools.qrsct;
 import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.neovisionaries.i18n.CurrencyCode;
 
@@ -10,6 +12,9 @@ import com.neovisionaries.i18n.CurrencyCode;
  * Quick Response (QR) for a SEPA Credit Transfer (SCT) builder
  */
 public class QRSCT {
+
+	private static Pattern SEPA_INVALID_SIGNS = Pattern.compile(
+			"[^A-Za-z0-9/-\\?:\\(\\)\\.,\\+\\s{1}]{1,}", Pattern.MULTILINE);
 
 	private QRSCTServiceTagEnum serviceTag = QRSCTServiceTagEnum.DEFAULT;
 	private QRSCTVersionEnum version = QRSCTVersionEnum.DEFAULT;
@@ -50,13 +55,13 @@ public class QRSCT {
 		data.append("\n"); //$NON-NLS-1$
 		data.append(IDENTIFICATION_CODE); // 3 - SCT (Funktion)
 		data.append("\n"); //$NON-NLS-1$
-		data.append(this.bic); // 8 oder 11 - (BIC Empf�ngerBank)
+		data.append(this.bic); // 8 oder 11 - (BIC EmpfängerBank)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.name); // 70 (Name
 								// Empfänger/KontoInhaber)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.iban); // 34 (IBAN
-								// Empf�ngerKonto)
+								// EmpfängerKonto)
 		data.append("\n"); //$NON-NLS-1$
 		data.append(this.amount); // 12 - (Betrag in Euro)
 		data.append("\n"); //$NON-NLS-1$
@@ -101,7 +106,7 @@ public class QRSCT {
 
 	public QRSCT bic(String bic) {
 		if (bic != null && (bic.length() == 8 || bic.length() == 11)) {
-			this.bic = bic;
+			this.bic = checkValidSigns(bic);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied bic [" + bic //$NON-NLS-1$
@@ -110,7 +115,7 @@ public class QRSCT {
 
 	public QRSCT name(String name) {
 		if (name != null && name.length() <= 70) {
-			this.name = name;
+			this.name = checkValidSigns(name);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied name [" + name //$NON-NLS-1$
@@ -119,7 +124,7 @@ public class QRSCT {
 
 	public QRSCT iban(String iban) {
 		if (iban != null && iban.length() == 34) {
-			this.iban = iban;
+			this.iban = checkValidSigns(iban);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied iban [" + iban //$NON-NLS-1$
@@ -176,7 +181,7 @@ public class QRSCT {
 	public QRSCT reference(String reference) {
 		if (reference != null && reference.length() <= 35) {
 			this.text = ""; //$NON-NLS-1$
-			this.reference = reference;
+			this.reference = checkValidSigns(reference);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied reference [" + reference //$NON-NLS-1$
@@ -195,7 +200,7 @@ public class QRSCT {
 	public QRSCT text(String text) {
 		if (text != null && text.length() <= 140) {
 			this.reference = ""; //$NON-NLS-1$
-			this.text = text;
+			this.text = checkValidSigns(text);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied text [" + text //$NON-NLS-1$
@@ -204,11 +209,25 @@ public class QRSCT {
 
 	public QRSCT hint(String hint) {
 		if (hint != null && hint.length() <= 70) {
-			this.hint = hint;
+			this.hint = checkValidSigns(hint);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied hint [" + hint //$NON-NLS-1$
 				+ "] not valid:  has to be not null and of max length 70"); //$NON-NLS-1$
 	}
 
+	public String checkValidSigns(String check) {
+		if (check != null) {
+			StringBuffer sb = new StringBuffer();
+			Matcher matcher = SEPA_INVALID_SIGNS.matcher(check);
+			while (matcher.find()) {
+				sb.append(matcher.group());
+			}
+			if (sb.length() > 0) {
+				throw new IllegalStateException("signs not valid ["
+						+ sb.toString() + "] in [" + check + "]");
+			}
+		}
+		return check;
+	}
 }
