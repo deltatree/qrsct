@@ -1,4 +1,4 @@
-qrsct
+qrsct [![Build Status](https://travis-ci.org/deltatree/qrsct.svg?branch=master)](https://travis-ci.org/deltatree/qrsct)
 =====
 
 java reference implementation: QR-code for sepa credit transfers (SCT) => in germany: girocode
