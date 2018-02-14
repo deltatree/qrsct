@@ -6,7 +6,7 @@ java reference implementation: QR-code for sepa credit transfers (SCT) => in ger
 demo-link
 =====
 
-http://qrsct.deltatree.de/dtapp/qrsct/
+https://qrsct-webapp.eu-gb.mybluemix.net
 
 maven
 =====
