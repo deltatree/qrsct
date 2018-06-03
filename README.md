@@ -14,7 +14,7 @@ maven
 		<dependency>
 			<groupId>de.deltatree.tools</groupId>
 			<artifactId>qrsct</artifactId>
-			<version>1.1.2</version>
+			<version>1.1.5</version>
 		</dependency>
 ```
 
