@@ -123,12 +123,12 @@ public class QRSCT {
 	}
 
 	public QRSCT iban(String iban) {
-		if (iban != null && iban.length() == 34) {
+		if (iban != null && iban.length() <= 34) {
 			this.iban = checkValidSigns(iban);
 			return this;
 		}
 		throw new IllegalArgumentException("supplied iban [" + iban //$NON-NLS-1$
-				+ "] not valid: has to be not null and of length 34"); //$NON-NLS-1$
+				+ "] not valid: has to be not null and of max length 34"); //$NON-NLS-1$
 	}
 
 	public QRSCT amount(CurrencyCode currency, double value) {
@@ -194,7 +194,7 @@ public class QRSCT {
 	 * define one of these attributes
 	 *
 	 * @param text
-	 *            text (max length: 35)
+	 *            text (max length: 140)
 	 * @return QRSCT builder
 	 */
 	public QRSCT text(String text) {
