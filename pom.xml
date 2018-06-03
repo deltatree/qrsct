@@ -33,7 +33,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>bintray-deltatree-maven-qrsct</id>
+			<id>bintray-deltatree-maven</id>
 			<name>deltatree-maven-qrsct</name>
 			<url>https://api.bintray.com/maven/deltatree/maven/qrsct</url>
 		</repository>
